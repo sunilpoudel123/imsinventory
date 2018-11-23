@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Office Information | Store Adminstration view</title>
+</head>
+<body>
+
+    <div class="container main-content">
+        <h3>Office view</h3>
+        <form th:method="post" th:object="${officeModel}" th:action="@{/office/add}" id="officeForm">
+            <div class="grid">
+                <div class="office-group">
+                    <h3>Please Enter your office details</h3>
+                    <div>
+                        <label for="country">Country Name</label>
+                        <input name="country" type="text" th:value="${office.country}" id="country"/>
+                    </div>
+                    <div>
+                        <label for="state">State</label>
+                        <input name="state" type="text" th:value="${office.state}" id="state"/>
+                    </div>
+                    <div>
+                        <label for="cityname">City Name</label>
+                        <input name="cityName" type="text" th:value="${office.cityName}" id="cityname"/>
+                    </div>
+                    <div>
+                        <label for="addressline1">New address AddressLine 1</label>
+                        <input name="addressLine1" type="text" th:value="${office.addressLine1}" id="addressline1"/>
+                    </div>
+                    <div>
+                        <label for="addressline2"> AddressLine 2</label>
+                        <input name="addressLine2" type="text" th:value="${office.addressLine2}" id="addressline2"/>
+                    </div>
+                    <div>
+                        <label for="phonenumber">Phone Number</label>
+                        <input name="phoneNumber" type="text" th:value="${office.phoneNumber}" id="phonenumber">
+                    </div>
+                    <div>
+                        <label for="postalcode"> Postal Code</label>
+                        <input name="postalCode" type="text" th:value="${office.postalCode}" id="postalcode">
+                    </div>
+                    <div>
+                        <label for="territory">Territory</label>
+                        <input name="territory" type="text" th:value="${office.territory}" id="territory">
+                    </div>
+
+                    <button> Submit your Office information</button>
+                </div>
+            </div>
+        </form>
+
+</body>
+</html>
