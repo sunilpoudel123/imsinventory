@@ -1,54 +1,79 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Office Information | Store Adminstration view</title>
 </head>
 <body>
-
-    <div class="container main-content">
-        <h3>Office view</h3>
-        <form th:method="post" th:object="${officeModel}" th:action="@{/office/add}" id="officeForm">
-            <div class="grid">
-                <div class="office-group">
-                    <h3>Please Enter your office details</h3>
-                    <div>
-                        <label for="country">Country Name</label>
-                        <input name="country" type="text" th:value="${office.country}" id="country"/>
-                    </div>
-                    <div>
-                        <label for="state">State</label>
-                        <input name="state" type="text" th:value="${office.state}" id="state"/>
-                    </div>
-                    <div>
-                        <label for="cityname">City Name</label>
-                        <input name="cityName" type="text" th:value="${office.cityName}" id="cityname"/>
-                    </div>
-                    <div>
-                        <label for="addressline1">New address AddressLine 1</label>
-                        <input name="addressLine1" type="text" th:value="${office.addressLine1}" id="addressline1"/>
-                    </div>
-                    <div>
-                        <label for="addressline2"> AddressLine 2</label>
-                        <input name="addressLine2" type="text" th:value="${office.addressLine2}" id="addressline2"/>
-                    </div>
-                    <div>
-                        <label for="phonenumber">Phone Number</label>
-                        <input name="phoneNumber" type="text" th:value="${office.phoneNumber}" id="phonenumber">
-                    </div>
-                    <div>
-                        <label for="postalcode"> Postal Code</label>
-                        <input name="postalCode" type="text" th:value="${office.postalCode}" id="postalcode">
-                    </div>
-                    <div>
-                        <label for="territory">Territory</label>
-                        <input name="territory" type="text" th:value="${office.territory}" id="territory">
-                    </div>
-
-                    <button> Submit your Office information</button>
-                </div>
+<div th:replace="fragments/header :: header"></div>
+</br>
+</br>
+</br>
+<div class="container">
+    <h3>Please Enter your office details</h3>
+    <form class="form-horizontal" th:method="post" th:object="${officeModel}" th:action="${office !=null}? '/office/add/' +${office.id}:'/office/add'" id="officeForm">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="country">Country Name: </label>
+            <div class="col-sm-10">
+                <input name="country" type="text" placeholder="Country Name" th:value="${office != null} ? ${office.country}" id="country"/>
             </div>
-        </form>
-
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="state">State:</label>
+            <div class="col-sm-10">
+                <input name="state" type="text" placeholder="State" th:value="${office != null} ? ${office.state}" id="state"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="cityname">City Name:</label>
+            <div class="col-sm-10">
+                <input name="cityName" type="text" placeholder="City Name" th:value="${office != null} ? ${office.cityName}" id="cityname"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="addressline1">AddressLine 1:</label>
+            <div class="col-sm-10">
+                <input name="addressLine1" type="text" placeholder="AddressLine 1" th:value="${office != null} ? ${office.addressLine1}" id="addressline1"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="addressline2"> AddressLine 2:</label>
+            <div class="col-sm-10">
+                <input name="addressLine2" type="text" placeholder="AddressLine 2" th:value="${office != null} ? ${office.addressLine2}" id="addressline2"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="phonenumber">Phone Number:</label>
+            <div class="col-sm-10">
+                <input name="phoneNumber" type="text" placeholder="Phone Number" th:value="${office != null} ? ${office.phoneNumber}" id="phonenumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="postalcode"> Postal Code:</label>
+            <div class="col-sm-10">
+                <input name="postalCode" type="text" placeholder="Postal Code" th:value="${office != null} ? ${office.postalCode}" id="postalcode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="territory">Territory:</label>
+            <div class="col-sm-10">
+                <input name="territory" type="text" placeholder="Territory" th:value="${office != null} ? ${office.territory}" id="territory">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit Office Information</button>
+            </div>
+        </div>
+</div>
+</div>
+</form>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

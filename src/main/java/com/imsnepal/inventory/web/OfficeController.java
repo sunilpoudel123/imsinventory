@@ -6,12 +6,8 @@ import com.imsnepal.inventory.domain.OfficeModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/office")
@@ -37,21 +33,52 @@ public class OfficeController {
         return "office";
     }
 
+
     @PostMapping(value="/add")
     public String saveOfficeData(OfficeModel officeModel){
-
         this.officeRepo.save(officeModel.translateModelToOffice());
-
-       return  "office";
+        return  "office";
     }
 
     @GetMapping(value = "/view")
     public String DisplayAllOfficeData(Model model){
-
         Iterable<Office> offices= this.officeRepo.findAll();
         model.addAttribute("offices", offices);
         return "office-view";
     }
+
+    @GetMapping(value = "/add/{id}")
+    public String getOfficeFormById(Model model, @PathVariable Long id){
+        Optional<Office> getOffice=this.officeRepo.findById(id);
+        model.addAttribute("office", getOffice.get());
+        return "office";
+    }
+
+    @GetMapping(value="/{id}")
+    public String getOfficeData(Model model, @PathVariable Long id){
+        Optional<Office> office= this.officeRepo.findById(id);
+        if(office.isPresent()){
+            model.addAttribute("offices",office.get());
+        }
+        return "office-view";
+    }
+
+    @PostMapping(value="/add/{id}")
+    public String updateOfficeData(Model model, @PathVariable Long id, OfficeModel officeModel){
+        Office updateOffice= officeModel.translateModelToOffice();
+        updateOffice.setId(id);
+        this.officeRepo.save(updateOffice);
+        return "office";
+    }
+
+    @GetMapping(value = "/delete/{id}")
+    public String deleteById(Model model, @PathVariable Long id){
+        this.officeRepo.deleteById(id);
+        Iterable<Office> offices= this.officeRepo.findAll();
+        model.addAttribute("offices", offices);
+        return "office-view";
+    }
+
 
 
 }
