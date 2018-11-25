@@ -1,0 +1,15 @@
+/*created by linus 2018*/
+
+/*.topnav-right{*/
+    /*float: right;*/
+/*}*/
+ .image-align{
+     alignment: center;
+     float: right;
+ }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
