@@ -11,30 +11,36 @@
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li th:classappend="${module == 'home' ? 'active' : ''}">
-                        <a href="/" th:href="@{/}">Home</a>
-                    </li>
-                    <li th:classappend="${module == 'home' ? 'active' : ''}">
-                        <a href="#" th:href="@{/office/}">Add New Office</a>
-                    </li>
-                    <li th:classappend="${module == 'home' ? 'active' : ''}">
-                        <a href="#" th:href="@{/office/view}">Display All Office Information</a>
-                    </li>
-                </ul>
+        <ul class="nav navbar-nav">
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="/" th:href="@{/}">Home</a>
+            </li>
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/office/}">Add New Office</a>
+            </li>
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/office/view}">Display All Office Information</a>
+            </li>
+        </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/signin" th:href="@{/signin}">
-                            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/signup" th:href="@{signup}">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register
-                        </a>
-                    </li>
-                </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/login" th:href="@{/login}">
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign in
+                </a>
+            </li>
+            <li>
+                <a href="/registration" th:href="@{/register}">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Register
+                </a>
+            </li>
+            <li>
+                <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout
+                </a>
+            <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
