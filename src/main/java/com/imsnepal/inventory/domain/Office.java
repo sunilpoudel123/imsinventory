@@ -1,6 +1,8 @@
 package com.imsnepal.inventory.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="office")
@@ -34,6 +36,9 @@ public class Office {
 
     @Column(name="territory")
     private String territory;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "office", cascade = CascadeType.ALL)
+    private List<Employee> employeeList= new ArrayList<>();
 
     public long getId() {
         return id;
@@ -106,6 +111,13 @@ public class Office {
         this.territory = territory;
     }
 
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
 
 }
 

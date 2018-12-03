@@ -19,7 +19,13 @@
                 <a href="#" th:href="@{/office/}">Add New Office</a>
             </li>
             <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/employee/}">Add New Employee</a>
+            </li>
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{/office/view}">Display All Office Information</a>
+            </li>
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/employee/view}">Display All Employee Information</a>
             </li>
         </ul>
 

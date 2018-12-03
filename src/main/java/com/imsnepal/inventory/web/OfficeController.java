@@ -1,6 +1,8 @@
 package com.imsnepal.inventory.web;
 
+import com.imsnepal.inventory.data.EmployeeRepository;
 import com.imsnepal.inventory.data.OfficeRepository;
+import com.imsnepal.inventory.domain.Employee;
 import com.imsnepal.inventory.domain.Office;
 import com.imsnepal.inventory.domain.OfficeModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,7 @@ import java.util.Optional;
 public class OfficeController {
 
     private OfficeRepository officeRepo;
-
+    private EmployeeRepository employeeRepository;
     //it is unused yet
     @ModelAttribute(name="office")
     public Office office(){
@@ -24,8 +26,9 @@ public class OfficeController {
     private Office office;
 
     @Autowired
-    public OfficeController(OfficeRepository officeRepository){
+    public OfficeController(OfficeRepository officeRepository, EmployeeRepository employeeRepository){
         this.officeRepo=officeRepository;
+        this.employeeRepository=employeeRepository;
     }
 
     @GetMapping
@@ -56,11 +59,9 @@ public class OfficeController {
 
     @GetMapping(value="/{id}")
     public String getOfficeData(Model model, @PathVariable Long id){
-        Optional<Office> office= this.officeRepo.findById(id);
-        if(office.isPresent()){
-            model.addAttribute("offices",office.get());
-        }
-        return "office-view";
+        Iterable<Employee> employee= this.employeeRepository.findAllByOffice_Id(id);
+            model.addAttribute("employees",employee);
+        return "office-employee-view";
     }
 
     @PostMapping(value="/add/{id}")
