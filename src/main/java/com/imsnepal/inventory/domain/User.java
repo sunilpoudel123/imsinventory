@@ -1,28 +1,30 @@
 package com.imsnepal.inventory.domain;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="user_id")
-    private  Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
+    private Long id;
 
     @Column(name = "username")
-    private  String username;
+    private String username;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="password")
-    private  String password;
+    @Column(name = "password")
+    private String password;
 
 
     public Long getId() {
@@ -81,7 +83,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList( new SimpleGrantedAuthority("ROLE_USER"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
 }

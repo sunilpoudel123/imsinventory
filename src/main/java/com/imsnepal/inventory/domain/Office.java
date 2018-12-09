@@ -5,40 +5,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="office")
+@Table(name = "office")
 public class Office {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="office_id")
+    @Column(name = "office_id")
     private long id;
 
-    @Column(name="city_name")
+    @Column(name = "city_name")
     private String cityName;
 
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name="addressline1")
+    @Column(name = "addressline1")
     private String addressLine1;
 
-    @Column(name="addressline2")
-    private  String addressLine2;
+    @Column(name = "addressline2")
+    private String addressLine2;
 
-    @Column(name="state")
+    @Column(name = "state")
     private String state;
 
-    @Column(name="country")
+    @Column(name = "country")
     private String country;
 
-    @Column(name="postal_code")
+    @Column(name = "postal_code")
     private String postalCode;
 
-    @Column(name="territory")
+    @Column(name = "territory")
     private String territory;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "office", cascade = CascadeType.ALL)
-    private List<Employee> employeeList= new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -47,6 +47,7 @@ public class Office {
     public void setId(long id) {
         this.id = id;
     }
+
     public String getCityName() {
         return cityName;
     }

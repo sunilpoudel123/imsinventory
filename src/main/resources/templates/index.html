@@ -18,9 +18,15 @@
     </br>
     </br>
     </br>
+
     <h2 align="center">Welcome to Ims Inventory! Please choose a Menu option to get start:</h2>
+    <p align="center">This Inventory keeps information for Office and its employee </p>
+
     <img th:src="@{/images/ims-logo.png}" class="center"/>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
+<!--<div th:replace="fragments/footer :: ${#authentication.principal.isAdmin()} ? 'footer-admin' : 'footer'">-->
+<!--&copy;The Static Templates-->
+<!--</div>-->
 </body>
 </html>

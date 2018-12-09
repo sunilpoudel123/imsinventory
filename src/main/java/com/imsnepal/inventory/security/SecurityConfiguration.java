@@ -24,7 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/office/", "/office/view")
+                .antMatchers("/office/", "/office/view", "/employee/", "/employee/view", "/user/", "/upload/", "/upload/add")
                 .access("hasRole('ROLE_USER')")
                 .antMatchers("/", "/**").permitAll()
                 .and()
@@ -38,8 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .headers()
                 .frameOptions()
                 .sameOrigin()
+                .and()
+                .csrf().disable()
         ;
     }
+
     @Bean
     public PasswordEncoder encoder() {
         return new StandardPasswordEncoder("53cr3t");

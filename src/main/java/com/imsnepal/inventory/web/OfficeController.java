@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @Controller
@@ -17,69 +18,69 @@ public class OfficeController {
 
     private OfficeRepository officeRepo;
     private EmployeeRepository employeeRepository;
+
     //it is unused yet
-    @ModelAttribute(name="office")
-    public Office office(){
+    @ModelAttribute(name = "office")
+    public Office office() {
         return new Office();
     }
 
     private Office office;
 
     @Autowired
-    public OfficeController(OfficeRepository officeRepository, EmployeeRepository employeeRepository){
-        this.officeRepo=officeRepository;
-        this.employeeRepository=employeeRepository;
+    public OfficeController(OfficeRepository officeRepository, EmployeeRepository employeeRepository) {
+        this.officeRepo = officeRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @GetMapping
-    public String getOfficeForm(Model model){
-        return "office";
+    public String getOfficeForm(Model model) {
+        return "/inventory/office";
     }
 
 
-    @PostMapping(value="/add")
-    public String saveOfficeData(OfficeModel officeModel){
+    @PostMapping(value = "/add")
+    public String saveOfficeData(OfficeModel officeModel) {
         this.officeRepo.save(officeModel.translateModelToOffice());
-        return  "office";
+        return "/inventory/office";
     }
 
     @GetMapping(value = "/view")
-    public String DisplayAllOfficeData(Model model){
-        Iterable<Office> offices= this.officeRepo.findAll();
+    public String DisplayAllOfficeData(Model model) {
+        Iterable<Office> offices = this.officeRepo.findAll();
         model.addAttribute("offices", offices);
-        return "office-view";
+        return "/inventory/office-view";
     }
 
     @GetMapping(value = "/add/{id}")
-    public String getOfficeFormById(Model model, @PathVariable Long id){
-        Optional<Office> getOffice=this.officeRepo.findById(id);
+    public String getOfficeFormById(Model model, @PathVariable Long id) {
+        Optional<Office> getOffice = this.officeRepo.findById(id);
         model.addAttribute("office", getOffice.get());
-        return "office";
+        return "/inventory/office";
     }
 
-    @GetMapping(value="/{id}")
-    public String getOfficeData(Model model, @PathVariable Long id){
-        Iterable<Employee> employee= this.employeeRepository.findAllByOffice_Id(id);
-            model.addAttribute("employees",employee);
-        return "office-employee-view";
+    @GetMapping(value = "/{id}")
+    public String getOfficeData(Model model, @PathVariable Long id) {
+        Iterable<Employee> employee = this.employeeRepository.findAllByOffice_Id(id);
+        model.addAttribute("employees", employee);
+        return "/inventory/office-employee-view";
     }
 
-    @PostMapping(value="/add/{id}")
-    public String updateOfficeData(Model model, @PathVariable Long id, OfficeModel officeModel){
-        Office updateOffice= officeModel.translateModelToOffice();
+    @PostMapping(value = "/add/{id}")
+    public String updateOfficeData(Model model, @PathVariable Long id, OfficeModel officeModel) {
+        Office updateOffice = officeModel.translateModelToOffice();
         updateOffice.setId(id);
         this.officeRepo.save(updateOffice);
-        return "office";
+        return "/inventory/office";
     }
 
     @GetMapping(value = "/delete/{id}")
-    public String deleteById(Model model, @PathVariable Long id){
+    public String deleteById(Model model, @PathVariable Long id) {
         this.officeRepo.deleteById(id);
-        Iterable<Office> offices= this.officeRepo.findAll();
+        Iterable<Office> offices = this.officeRepo.findAll();
         model.addAttribute("offices", offices);
-        return "office-view";
+        return "/inventory/office-view";
     }
-
 
 
 }

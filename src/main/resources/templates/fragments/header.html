@@ -19,15 +19,22 @@
                 <a href="#" th:href="@{/office/}">Add New Office</a>
             </li>
             <li th:classappend="${module == 'home' ? 'active' : ''}">
-                <a href="#" th:href="@{/employee/}">Add New Employee</a>
-            </li>
-            <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{/office/view}">Display All Office Information</a>
             </li>
             <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/employee/}">Add New Employee</a>
+            </li>
+
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
                 <a href="#" th:href="@{/employee/view}">Display All Employee Information</a>
             </li>
+
+            <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <a href="#" th:href="@{/user/}"> User Info</a>
+            </li>
+
         </ul>
+
 
         <ul class="nav navbar-nav navbar-right">
             <li>
@@ -44,7 +51,7 @@
                 <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout
                 </a>
-            <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+                <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
             </li>
         </ul>
     </div>

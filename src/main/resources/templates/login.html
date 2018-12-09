@@ -15,7 +15,7 @@
 <!--write here-->
 <div class="container">
     <h3>Login Form</h3>
-    <form  class="form-horizontal" th:method="post" th:action="@{/login}" id="userForm">
+    <form class="form-horizontal" th:method="post" th:action="@{/login}" id="userForm">
         <div class="container">
             <label for="username"><b>Username: </b></label>
             <input type="text" placeholder="Enter Username" name="username" id="username" required>
@@ -24,9 +24,9 @@
             <label for="password"><b>Password: </b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
             <div>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
             </div>
         </div>
         <div class="container">

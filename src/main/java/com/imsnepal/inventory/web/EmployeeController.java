@@ -16,29 +16,28 @@ public class EmployeeController {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepository){
-        this.employeeRepository=employeeRepository;
+    public EmployeeController(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
 
     }
 
     @GetMapping
-    public String getEmployeeForm(){
-        return "employee";
+    public String getEmployeeForm() {
+        return "/inventory/employee";
     }
 
     @PostMapping
-    public String saveEmployeeData(Employee employee){
+    public String saveEmployeeData(Employee employee) {
         this.employeeRepository.save(employee.toEmployee());
-        return "employee";
+        return "/inventory/employee";
     }
 
-    @GetMapping(value="/view")
-    public String displayAllEmployeeData(Model model){
-        Iterable<Employee> employeeData= this.employeeRepository.findAll();
+    @GetMapping(value = "/view")
+    public String displayAllEmployeeData(Model model) {
+        Iterable<Employee> employeeData = this.employeeRepository.findAll();
         model.addAttribute("employees", employeeData);
-        return "employee-view";
+        return "/inventory/employee-view";
     }
-
 
 
 }

@@ -3,17 +3,18 @@
 /*.topnav-right{*/
 /*float: right;*/
 /*}*/
-.image-align{
+.image-align {
     alignment: center;
     float: right;
 }
 
-    /*float: right;*/
+/*float: right;*/
 /*}*/
- .image-align{
-     alignment: center;
-     float: right;
- }
+.image-align {
+    alignment: center;
+    float: right;
+}
+
 .center {
     display: block;
     margin-left: auto;
@@ -21,13 +22,15 @@
     width: 50%;
 
 }
-.container{
+
+.container {
     padding: 15px;
 }
 
-.cancelbtn, .signupbtn,.loginbtn {
+.cancelbtn, .signupbtn, .loginbtn {
     width: 20%;
 }
+
 input[type=text], input[type=password] {
     width: 40%;
     padding: 10px;

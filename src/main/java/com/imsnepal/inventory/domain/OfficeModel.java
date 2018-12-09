@@ -76,7 +76,7 @@ public class OfficeModel {
     }
 
     public Office translateModelToOffice() {
-        Office office= new Office();
+        Office office = new Office();
         office.setCityName(this.cityName);
         office.setPhoneNumber(this.phoneNumber);
         office.setAddressLine1(this.addressLine1);

@@ -3,34 +3,34 @@ package com.imsnepal.inventory.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="employee_id")
+    @Column(name = "employee_id")
     private Long employeeNumber;
 
     @Column(name = "lastname")
     private String lastName;
 
-    @Column(name="firstname")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name="extension")
+    @Column(name = "extension")
     private String extension;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="reportsto")
+    @Column(name = "reportsto")
     private String reportsTo;
 
-    @Column(name="jobtitle")
+    @Column(name = "jobtitle")
     private String jobTitle;
 
     @ManyToOne
-    @JoinColumn(name="employeeofficeid")
+    @JoinColumn(name = "employeeofficeid")
     private Office office;
 
     public Long getEmployeeNumber() {
@@ -98,7 +98,7 @@ public class Employee {
     }
 
     public Employee toEmployee() {
-        Employee employee= new Employee();
+        Employee employee = new Employee();
         employee.setLastName(this.lastName);
         employee.setFirstName(this.firstName);
         employee.setExtension(this.extension);

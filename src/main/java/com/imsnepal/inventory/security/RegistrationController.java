@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/register")
+@RequestMapping(value = "/register")
 public class RegistrationController {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
 
-    public RegistrationController(UserRepository userRepository, PasswordEncoder passwordEncoder){
-        this.userRepository=userRepository;
-        this.passwordEncoder= passwordEncoder;
+    public RegistrationController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
-    public String getRegisterForm(Model model){
+    public String getRegisterForm(Model model) {
 
         return "registration";
     }
 
     @PostMapping
-    public String submitRegisterData(RegistrationForm form){
+    public String submitRegisterData(RegistrationForm form) {
 
         userRepository.save(form.toUser(passwordEncoder));
         return "redirect:/login";
